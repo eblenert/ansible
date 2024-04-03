@@ -1,0 +1,16 @@
+---
+- name: Add DHCP server for VLAN_20
+  community.routeros.command:
+    commands:
+      - /ip dhcp-server network add address=192.168.20.0/24 gateway=192.168.20.1 dns-server=1.1.1.1
+      - /ip dhcp-server add address-pool=pool_20 disabled=no interface=wrk_vlan_20 name=dhcp_20
+
+- name: Add DHCP server for VLAN_30
+  community.routeros.command:
+    commands:
+      - /ip dhcp-server add address-pool=pool_30 disabled=no interface=srv_vlan_30
+
+- name: Add DHCP server for VLAN_40
+  community.routeros.command:
+    commands:
+      - /ip dhcp-server add address-pool=pool_40 disabled=no interface=iot_vlan_40

@@ -1,0 +1,35 @@
+---
+- name: RouterOS configuration
+  hosts: routers
+  tasks:
+    - name: Add vlans
+      ansible.builtin.include_tasks: tasks/vlans.yaml
+    - name: Add pools
+      ansible.builtin.include_tasks: tasks/pools.yaml
+    - name: Add dhcp_servers
+      ansible.builtin.include_tasks: tasks/dhcp_servers.yaml
+
+#   gather_facts: false
+  # tasks:
+  #   - name: Run a command
+  #     community.routeros.command:
+  #       commands:
+  #         - /interface vlan add name=vlan_40 vlan-id=40 interface=bridge1
+    #   register: system_resource_print
+    # - name: Print its output
+    #   ansible.builtin.debug:
+    #     var: system_resource_print.stdout_lines
+
+    # - name: Retrieve facts
+    #   community.routeros.facts:
+
+    # - name: Debug
+    #   ansible.builtin.debug:
+    #     msg: "First IP address: {{ ansible_net_all_ipv4_addresses[0] }}"
+    # - name: Add VLAN interface
+    #   community.routeros.api:
+    #     hostname: "{{ hostname }}"
+    #     password: "{{ password }}"
+    #     username: "{{ username }}"
+    #     path: "interface vlan"
+    #     add: "name=vlan_30 vlan-id=30 interface=bridge1"

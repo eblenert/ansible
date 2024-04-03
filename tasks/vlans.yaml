@@ -1,0 +1,16 @@
+---
+- name: Add VLAN_20
+  community.routeros.command:
+    commands:
+      - /interface vlan add name=wrk_vlan_20 vlan-id=20 interface=bridge1
+      - /ip address add address=192.168.20.1/24 interface=wrk_vlan_20 network=192.168.20.1
+- name: Add VLAN_30
+  community.routeros.command:
+    commands:
+      - /interface vlan add name=srv_vlan_30 vlan-id=30 interface=bridge1
+      - /ip address add address=192.168.30.1/24 interface=srv_vlan_30 network=192.168.30.1
+- name: Add VLAN_40
+  community.routeros.command:
+    commands:
+      - /interface vlan add name=iot_vlan_40 vlan-id=40 interface=bridge1
+      - /ip address add address=192.168.40.1/24 interface=iot_vlan_40 network=192.168.40.1
